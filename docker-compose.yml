@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # Development service
+  shapes-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+    profiles:
+      - dev
+
+  # Production service
+  shapes-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    profiles:
+      - prod
