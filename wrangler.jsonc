@@ -1,0 +1,7 @@
+{
+  "name": "shapes-app",
+  "compatibility_date": "2025-07-31",
+  "assets": {
+    "directory": "./build"
+  }
+}
