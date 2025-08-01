@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { statusBarContent } from '../data/fileContent';
 
 const StatusBar = () => {
   const [showCursor, setShowCursor] = useState(true);
@@ -13,10 +14,10 @@ const StatusBar = () => {
 
   return (
     <div className="status-bar">
-      <span>TERMINAL: ACTIVE</span>
-      <span>SHAPES == _EXPERIMENTAL_COMMUNITY_PROTOCOLS</span>
+      <span>{statusBarContent.terminal}</span>
+      <span>{statusBarContent.project}</span>
       <span>
-        USER: VISITOR
+        {statusBarContent.user}
         <span className={`cursor ${showCursor ? '' : 'hidden'}`}>|</span>
       </span>
     </div>

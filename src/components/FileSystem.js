@@ -1,46 +1,15 @@
 import React from 'react';
+import { getAllFiles, fileSystemHeader } from '../data/fileContent';
 
 const FileSystem = ({ onFileClick }) => {
-  const files = [
-    {
-      name: 'drwxr-xr-x  HOME.txt',
-      status: '[████████░░] 100% loaded',
-      progress: 100,
-      key: 'home'
-    },
-    {
-      name: 'drwxr-xr-x  RITUAL_ARCHIVE/',
-      status: '[████████▒▒] 80% accessed',
-      progress: 80,
-      key: 'ritual'
-    },
-    {
-      name: 'drwxr-xr-x  UPCOMING.log',
-      status: '[██▒▒▒▒▒▒▒▒] 20% preview',
-      progress: 20,
-      key: 'upcoming'
-    },
-    {
-      name: 'drwxr-xr-x  CODEBOOK.md',
-      status: '[██████████] 100% available',
-      progress: 100,
-      key: 'codebook'
-    },
-    {
-      name: '-rw-r--r--  CONTACT.sys',
-      status: '[▒▒▒▒▒▒▒▒▒▒] ENCRYPTED',
-      progress: 0,
-      key: 'contact',
-      encrypted: true
-    }
-  ];
+  const files = getAllFiles();
 
   return (
     <div className="file-system">
       <div className="file-header">
-        <div>SHAPES:/ $ ls -la</div>
+        <div>{fileSystemHeader.command}</div>
         <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
-          STATUS: ACTIVE | LAST_UPDATE: 2025.07.29_15:47:33
+          {fileSystemHeader.status}
         </div>
       </div>
       
