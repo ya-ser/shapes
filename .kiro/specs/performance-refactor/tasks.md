@@ -38,20 +38,20 @@
     - Remove unused CSS rules
     - _Requirements: 5.2, 5.5_
 
-- [ ] 4. Refactor Terminal component with consolidated functionality
-  - [ ] 4.1 Consolidate FileSystem component into Terminal.js
+- [x] 4. Refactor Terminal component with consolidated functionality
+  - [x] 4.1 Consolidate FileSystem component into Terminal.js
     - Move FileSystem component logic into Terminal as internal component
     - Integrate file data from centralized data source
     - Implement optimized file item rendering with React.memo
     - _Requirements: 6.1, 6.2, 3.4_
 
-  - [ ] 4.2 Consolidate Modal component into Terminal.js
+  - [x] 4.2 Consolidate Modal component into Terminal.js
     - Move Modal component logic into Terminal as internal component
     - Implement keyboard navigation and accessibility features
     - Add performance optimizations for modal rendering
     - _Requirements: 2.3, 6.1, 3.4_
 
-  - [ ] 4.3 Consolidate StatusBar component into Terminal.js
+  - [x] 4.3 Consolidate StatusBar component into Terminal.js
     - Move StatusBar component logic into Terminal as internal component
     - Implement optimized cursor blinking animation
     - Add status state management
