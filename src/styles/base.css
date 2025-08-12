@@ -1,0 +1,300 @@
+/* SHAPES Design System - Base Styles */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-relaxed);
+  color: var(--primary-black);
+  background: var(--primary-white);
+  font-size: var(--font-size-base);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-lg);
+}
+
+h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Links */
+a {
+  color: var(--primary-black);
+  text-decoration: none;
+  transition: var(--transition-normal);
+}
+
+a:hover {
+  color: var(--medium-gray);
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition-normal);
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: var(--primary-white);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.btn-primary:hover {
+  background: var(--primary-black);
+}
+
+.btn-secondary {
+  background: var(--primary-black);
+  color: var(--primary-white);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-blue);
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Sections */
+section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.section-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--medium-gray);
+  margin-bottom: var(--spacing-xl);
+  font-family: var(--font-family-mono);
+}
+
+.section-title::before {
+  content: '_';
+  color: var(--accent-blue);
+  margin-right: 5px;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.font-mono {
+  font-family: var(--font-family-mono);
+}
+
+.font-weight-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-weight-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-weight-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.color-primary {
+  color: var(--primary-black);
+}
+
+.color-secondary {
+  color: var(--medium-gray);
+}
+
+.color-accent {
+  color: var(--accent-blue);
+}
+
+.bg-primary {
+  background: var(--primary-white);
+}
+
+.bg-secondary {
+  background: var(--off-white);
+}
+
+.bg-dark {
+  background: var(--primary-black);
+  color: var(--primary-white);
+}
+
+/* Responsive Design */
+
+/* Mobile First - Base styles are mobile */
+.container {
+  padding: 0 var(--container-padding-mobile);
+}
+
+section {
+  padding: var(--spacing-2xl) 0;
+}
+
+/* Touch targets for mobile */
+button, 
+a, 
+input, 
+select, 
+textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 0 var(--container-padding-tablet);
+  }
+  
+  section {
+    padding: var(--spacing-2xl) 0;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .container {
+    padding: 0 var(--container-padding);
+  }
+  
+  section {
+    padding: var(--spacing-3xl) 0;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1201px) {
+  section {
+    padding: calc(var(--spacing-3xl) * 1.2) 0;
+  }
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(24px, 8vw, 32px);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  h2 {
+    font-size: clamp(20px, 6vw, 24px);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  h3 {
+    font-size: clamp(18px, 5vw, 20px);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  p {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary,
+  .btn-secondary {
+    border: 2px solid currentColor;
+  }
+  
+  .container {
+    border: 1px solid transparent;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-black: #ffffff;
+    --primary-white: #000000;
+    --off-white: #111111;
+    --light-gray: #333333;
+    --medium-gray: #cccccc;
+    --dark-gray: #eeeeee;
+  }
+}

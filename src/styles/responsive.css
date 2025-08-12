@@ -1,0 +1,274 @@
+/* SHAPES Design System - Responsive Utilities */
+
+/* Responsive Grid Utilities */
+.grid-responsive {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid-responsive.cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid-responsive.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-responsive.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-responsive.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Mobile First Responsive Grid */
+@media (max-width: 480px) {
+  .grid-responsive.cols-2,
+  .grid-responsive.cols-3,
+  .grid-responsive.cols-4 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .grid-responsive.cols-3,
+  .grid-responsive.cols-4 {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .grid-responsive.cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive Text Utilities */
+.text-responsive-sm {
+  font-size: clamp(12px, 2.5vw, 14px);
+}
+
+.text-responsive-base {
+  font-size: clamp(14px, 3vw, 16px);
+}
+
+.text-responsive-lg {
+  font-size: clamp(16px, 3.5vw, 18px);
+}
+
+.text-responsive-xl {
+  font-size: clamp(20px, 4vw, 24px);
+}
+
+.text-responsive-2xl {
+  font-size: clamp(24px, 5vw, 32px);
+}
+
+.text-responsive-3xl {
+  font-size: clamp(32px, 6vw, 48px);
+}
+
+/* Responsive Spacing Utilities */
+.spacing-responsive-sm {
+  padding: clamp(10px, 2.5vw, 15px);
+}
+
+.spacing-responsive-md {
+  padding: clamp(15px, 3vw, 20px);
+}
+
+.spacing-responsive-lg {
+  padding: clamp(20px, 4vw, 30px);
+}
+
+.spacing-responsive-xl {
+  padding: clamp(30px, 5vw, 40px);
+}
+
+/* Responsive Margin Utilities */
+.margin-responsive-sm {
+  margin: clamp(10px, 2.5vw, 15px);
+}
+
+.margin-responsive-md {
+  margin: clamp(15px, 3vw, 20px);
+}
+
+.margin-responsive-lg {
+  margin: clamp(20px, 4vw, 30px);
+}
+
+.margin-responsive-xl {
+  margin: clamp(30px, 5vw, 40px);
+}
+
+/* Responsive Visibility Utilities */
+.hide-mobile {
+  display: block;
+}
+
+.hide-tablet {
+  display: block;
+}
+
+.hide-desktop {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}
+
+.show-tablet {
+  display: none;
+}
+
+.show-desktop {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+  
+  .show-tablet {
+    display: block !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+  
+  .show-desktop {
+    display: block !important;
+  }
+}
+
+/* Responsive Container Utilities */
+.container-responsive {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding-mobile);
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container-responsive {
+    padding: 0 var(--container-padding-tablet);
+  }
+}
+
+@media (min-width: 769px) {
+  .container-responsive {
+    padding: 0 var(--container-padding);
+  }
+}
+
+/* Responsive Flexbox Utilities */
+.flex-responsive {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.flex-responsive.justify-center {
+  justify-content: center;
+}
+
+.flex-responsive.justify-between {
+  justify-content: space-between;
+}
+
+.flex-responsive.align-center {
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  .flex-responsive {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .flex-responsive.justify-between {
+    justify-content: center;
+  }
+}
+
+/* Touch Target Optimization */
+@media (hover: none) and (pointer: coarse) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .touch-target-large {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Responsive Image Utilities */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.img-responsive.center {
+  margin: 0 auto;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  p, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  blockquote, pre {
+    page-break-inside: avoid;
+  }
+}
