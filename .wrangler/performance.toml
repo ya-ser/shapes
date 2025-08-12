@@ -1,0 +1,44 @@
+# Cloudflare Workers Performance Configuration
+
+[performance]
+# CPU time limit (milliseconds)
+cpu_ms = 50
+
+# Memory limit (MB)
+memory_mb = 128
+
+# Request timeout (seconds)
+timeout = 30
+
+[caching]
+# Default cache TTL for different content types
+html_ttl = 3600        # 1 hour
+css_ttl = 31536000     # 1 year
+js_ttl = 31536000      # 1 year
+image_ttl = 31536000   # 1 year
+font_ttl = 31536000    # 1 year
+
+[compression]
+# Enable compression for these MIME types
+types = [
+  "text/html",
+  "text/css", 
+  "text/javascript",
+  "application/javascript",
+  "application/json",
+  "text/plain",
+  "image/svg+xml"
+]
+
+# Minimum file size to compress (bytes)
+min_size = 1024
+
+[headers]
+# Security headers
+security = true
+
+# Performance headers  
+performance = true
+
+# CORS headers (if needed)
+cors = false

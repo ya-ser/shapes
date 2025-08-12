@@ -1,7 +1,97 @@
 {
   "name": "shapes-app",
   "compatibility_date": "2025-07-31",
+  "main": "src/worker.js",
   "assets": {
-    "directory": "./build"
+    "directory": "./build",
+    // Asset optimization and caching configuration
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-app"
+  },
+  // Performance optimizations
+  "limits": {
+    "cpu_ms": 50
+  },
+  // Environment variables for optimization
+  "vars": {
+    "ENVIRONMENT": "production",
+    "CACHE_VERSION": "v1"
+  },
+  // Custom headers for performance
+  "rules": [
+    {
+      "type": "Header",
+      "src": "/*",
+      "headers": {
+        // Security headers
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        // Performance headers
+        "X-DNS-Prefetch-Control": "on"
+      }
+    },
+    {
+      "type": "Header", 
+      "src": "/static/**",
+      "headers": {
+        // Long-term caching for static assets
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Expires": "Thu, 31 Dec 2025 23:59:59 GMT"
+      }
+    },
+    {
+      "type": "Header",
+      "src": "/*.js",
+      "headers": {
+        // JavaScript files caching
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Type": "application/javascript; charset=utf-8"
+      }
+    },
+    {
+      "type": "Header", 
+      "src": "/*.css",
+      "headers": {
+        // CSS files caching
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Type": "text/css; charset=utf-8"
+      }
+    },
+    {
+      "type": "Header",
+      "src": "/*.html",
+      "headers": {
+        // HTML files - shorter cache for updates
+        "Cache-Control": "public, max-age=3600, must-revalidate",
+        "Content-Type": "text/html; charset=utf-8"
+      }
+    },
+    {
+      "type": "Header",
+      "src": "/*.gz",
+      "headers": {
+        // Gzip compressed files
+        "Content-Encoding": "gzip",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "type": "Header",
+      "src": "/manifest.json",
+      "headers": {
+        // PWA manifest caching
+        "Cache-Control": "public, max-age=86400",
+        "Content-Type": "application/manifest+json"
+      }
+    }
+  ],
+
+  // Development configuration
+  "dev": {
+    "port": 8787,
+    "local_protocol": "https"
   }
 }

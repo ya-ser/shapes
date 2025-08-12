@@ -15,12 +15,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
+    "build:analyze": "ANALYZE=true craco build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "deploy:cf": "node scripts/deploy.js",
+    "deploy:cf:prod": "NODE_ENV=production REMOVE_SOURCEMAPS=true node scripts/deploy.js",
     "docker:dev": "docker-compose --profile dev up --build",
     "docker:prod": "docker-compose --profile prod up --build",
     "docker:build": "docker build -t shapes:latest .",
@@ -44,9 +47,18 @@
       "last 1 safari version"
     ]
   },
+  "sideEffects": [
+    "*.css",
+    "src/index.js",
+    "src/reportWebVitals.js"
+  ],
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
-    "gh-pages": "^6.3.0"
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "compression-webpack-plugin": "^11.1.0",
+    "gh-pages": "^6.3.0",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

@@ -31,6 +31,10 @@
   animation: atomicGlow 4s infinite alternate;
 }
 
+.header--animated::before {
+  animation: orbit 8s linear infinite;
+}
+
 .header::before {
   content: '';
   position: absolute;
@@ -80,6 +84,30 @@
   border-right: 3px solid var(--primary-color);
 }
 
+.logo {
+  font-size: 11px;
+  line-height: 1;
+  white-space: pre;
+  margin-bottom: var(--spacing-2xl);
+  color: var(--primary-color);
+  text-shadow: 
+    0 0 5px var(--primary-color),
+    0 0 10px var(--primary-color),
+    0 0 20px rgba(255, 107, 53, 0.5);
+  position: relative;
+  z-index: var(--z-elevated);
+}
+
+.subtitle {
+  margin-top: var(--spacing-2xl);
+  color: var(--secondary-color);
+  width: fit-content;
+  margin: var(--spacing-2xl) auto 0;
+  font-size: var(--font-size-lg);
+  letter-spacing: var(--letter-spacing-wide);
+  text-shadow: 0 0 8px rgba(255, 179, 71, 0.6);
+}
+
 /* ===== MORPHING CONTAINER COMPONENT ===== */
 .morphing-container {
   text-align: center;
@@ -90,8 +118,36 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  contain: layout style paint;
+  will-change: transform;
 }
 
+/* Orbital animation rings */
+.morphing-container__orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-round);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.morphing-container__orbit--outer {
+  width: 300px;
+  height: 300px;
+  border: 2px solid rgba(255, 107, 53, 0.2);
+  animation: orbit 15s linear infinite reverse;
+}
+
+.morphing-container__orbit--inner {
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(255, 179, 71, 0.3);
+  animation: orbit 10s linear infinite;
+}
+
+/* Legacy pseudo-element support for older implementations */
 .morphing-container::before {
   content: '';
   position: absolute;
@@ -103,6 +159,7 @@
   border: 2px solid rgba(255, 107, 53, 0.2);
   border-radius: var(--radius-round);
   animation: orbit 15s linear infinite reverse;
+  pointer-events: none;
 }
 
 .morphing-container::after {
@@ -116,6 +173,23 @@
   border: 1px solid rgba(255, 179, 71, 0.3);
   border-radius: var(--radius-round);
   animation: orbit 10s linear infinite;
+  pointer-events: none;
+}
+
+.morph-display {
+  white-space: pre;
+  font-family: var(--font-mono);
+  line-height: 1.2;
+  color: var(--primary-color);
+  text-shadow: 
+    0 0 5px var(--primary-color),
+    0 0 10px rgba(255, 107, 53, 0.5),
+    0 0 20px rgba(255, 107, 53, 0.2);
+  position: relative;
+  z-index: var(--z-elevated);
+  background: radial-gradient(ellipse at center, rgba(42, 24, 16, 0.8) 0%, transparent 70%);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-xl);
 }
 
 .morphing-container__display {
@@ -262,11 +336,47 @@
   border-left: 4px solid var(--primary-color);
   padding-left: var(--spacing-xl);
   transform: translateX(10px) scale(1.02);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 
+    0 5px 15px rgba(255, 107, 53, 0.2),
+    inset 0 1px 0 rgba(255, 179, 71, 0.3);
+}
+
+.file-item--encrypted:hover {
+  transform: translateX(10px) scale(1.02);
+  box-shadow: 
+    0 5px 15px rgba(255, 193, 7, 0.3),
+    inset 0 1px 0 rgba(255, 193, 7, 0.4);
+  border-left-color: var(--accent-color);
+}
+
+.file-item--encrypted:hover .file-item__name--encrypted-dark {
+  animation: retroGlitch 0.6s ease-in-out, atomicGlow 2s infinite;
 }
 
 .file-item--dark:hover::before {
   width: 100%;
+}
+
+.file-item--encrypted {
+  position: relative;
+}
+
+.file-item--encrypted::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 193, 7, 0.1) 50%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.file-item--encrypted:hover::after {
+  opacity: 1;
+  animation: scan 1s ease-in-out;
 }
 
 .file-item__name {
@@ -364,6 +474,21 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   animation: shine 3s ease-in-out infinite;
+}
+
+.progress-bar--encrypted {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+.progress-bar--encrypted::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.5), transparent);
+  animation: scan 1.5s linear infinite;
+}
+
+.progress-bar--encrypted .progress-bar__fill--dark {
+  background: linear-gradient(90deg, var(--accent-color) 0%, #ffeb3b 50%, var(--accent-color) 100%);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 /* ===== STATUS BAR COMPONENT ===== */
@@ -574,11 +699,19 @@
   .morphing-container {
     height: 150px;
     margin: var(--spacing-2xl) 0;
+    font-size: var(--font-size-base);
   }
   
+  /* Hide orbital animations on mobile for performance */
   .morphing-container::before,
-  .morphing-container::after {
-    display: none; /* Hide orbital animations on mobile for performance */
+  .morphing-container::after,
+  .morphing-container__orbit {
+    display: none;
+  }
+  
+  .morph-display {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-sm);
   }
 }
 
@@ -595,6 +728,20 @@
   .modal__content {
     max-width: 600px;
   }
+  
+  .morphing-container {
+    height: 200px;
+  }
+  
+  .morphing-container__orbit--outer {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .morphing-container__orbit--inner {
+    width: 170px;
+    height: 170px;
+  }
 }
 
 /* Desktop */
@@ -609,6 +756,20 @@
   
   .modal__content {
     max-width: 700px;
+  }
+  
+  .morphing-container {
+    height: 280px;
+  }
+  
+  .morphing-container__orbit--outer {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .morphing-container__orbit--inner {
+    width: 230px;
+    height: 230px;
   }
 }
 
@@ -659,6 +820,7 @@
   .header::before,
   .morphing-container::before,
   .morphing-container::after,
+  .morphing-container__orbit,
   .file-system--dark::before,
   .modal__content--dark::before {
     animation: none;

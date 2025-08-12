@@ -1,5 +1,7 @@
 import React from 'react';
-import './App.css';
+import './styles/globals.css';
+import './styles/animations.css';
+import './styles/components.css';
 import Terminal from './components/Terminal';
 
 function App() {
