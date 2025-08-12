@@ -1,0 +1,122 @@
+/* Footer Styles */
+
+.footer {
+  background: var(--primary-black);
+  color: var(--primary-white);
+  padding: var(--spacing-2xl) 0 var(--spacing-xl);
+}
+
+.footer-content {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  text-align: center;
+}
+
+.footer-info h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.footer-info p {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--medium-gray);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-tagline {
+  font-style: italic;
+  font-size: var(--font-size-base);
+  margin-top: var(--spacing-lg);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+  }
+  
+  .footer-content {
+    padding: 0 var(--container-padding-mobile);
+  }
+  
+  .footer-info h3 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .footer-info p {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-normal);
+  }
+  
+  .footer-tagline {
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-md);
+    line-height: var(--line-height-normal);
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+  }
+  
+  .footer-content {
+    padding: 0 var(--container-padding-tablet);
+  }
+  
+  .footer-info h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .footer-info p {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .footer-tagline {
+    font-size: var(--font-size-base);
+    margin-top: var(--spacing-lg);
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .footer {
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  }
+  
+  .footer-content {
+    padding: 0 var(--container-padding);
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1201px) {
+  .footer {
+    padding: calc(var(--spacing-2xl) * 1.2) 0 calc(var(--spacing-xl) * 1.2);
+  }
+  
+  .footer-info h3 {
+    font-size: clamp(18px, 2vw, 24px);
+  }
+  
+  .footer-info p {
+    font-size: var(--font-size-base);
+  }
+  
+  .footer-tagline {
+    font-size: var(--font-size-lg);
+  }
+}

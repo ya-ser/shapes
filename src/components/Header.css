@@ -1,0 +1,104 @@
+/* Header Component Styles */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-bottom: 1px solid var(--light-gray);
+  padding: var(--spacing-md) 0;
+  z-index: var(--z-header);
+  transition: var(--transition-normal);
+}
+
+.header-content {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--primary-black);
+  transition: var(--transition-normal);
+}
+
+.logo:hover {
+  color: var(--accent-blue);
+}
+
+/* Responsive Design */
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .header {
+    padding: var(--spacing-xs) 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-header);
+  }
+  
+  .header-content {
+    padding: 0 var(--container-padding-mobile);
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: var(--font-size-base);
+    text-align: center;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 768px) {
+  .header-content {
+    padding: 0 var(--container-padding-tablet);
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .header {
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .logo {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .header-content {
+    padding: 0 var(--container-padding);
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .header {
+    padding: var(--spacing-md) 0;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .logo {
+    padding: var(--spacing-xs);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

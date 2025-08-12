@@ -1,0 +1,172 @@
+/* Vision Section Styles */
+
+.vision-section {
+  padding: var(--spacing-3xl) 0;
+  background: var(--primary-white);
+}
+
+.vision-heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-light);
+  margin-bottom: var(--spacing-lg);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--primary-black);
+  line-height: var(--line-height-normal);
+}
+
+/* Vision Grid */
+.vision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.vision-card {
+  position: relative;
+  background: var(--primary-white);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl);
+  transition: var(--transition-normal);
+  cursor: pointer;
+}
+
+.vision-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.vision-title {
+  color: var(--primary-black);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.vision-description {
+  color: var(--medium-gray);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Responsive Design */
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .vision-section {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .vision-heading {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-tight);
+  }
+  
+  .vision-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .vision-card {
+    padding: var(--spacing-md);
+  }
+  
+  .vision-title {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-tight);
+  }
+  
+  .vision-description {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 1023px) {
+  .vision-section {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .vision-heading {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .vision-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .vision-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .vision-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .vision-description {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .vision-section {
+    padding: var(--spacing-3xl) 0;
+  }
+  
+  .vision-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .vision-card {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1201px) {
+  .vision-grid {
+    gap: var(--spacing-2xl);
+  }
+  
+  .vision-card {
+    padding: calc(var(--spacing-xl) * 1.2);
+  }
+  
+  .vision-heading {
+    font-size: clamp(20px, 2.5vw, 28px);
+  }
+  
+  .vision-title {
+    font-size: clamp(16px, 1.8vw, 20px);
+  }
+  
+  .vision-description {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .vision-card {
+    transition: none;
+  }
+  
+  .vision-card:active {
+    transform: scale(0.98);
+    border-color: var(--accent-blue);
+  }
+}
